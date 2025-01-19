@@ -29,7 +29,7 @@ def list_operations(numbers):
     total_sum=sum(numbers)
     maximum=max(numbers)
     minimum=min(numbers)
-    return total_sum,maximum,minimum
+    return (total_sum,maximum,minimum)
 
 numbers=[20,60,40]
 result=list_operations(numbers)
@@ -40,7 +40,7 @@ def dict_operations(students_dict):
     student_library = [name for name, score in students_dict.items() if score > 80]
     return student_library
 students = {
-    "hamida": 400,
+    "Hamida": 90,
     "Baraka": 65,
     "Charlie": 85,
     "David": 70
@@ -50,90 +50,58 @@ print(result)
 
 
 def set_operations(list1, list2):
-   
-    def set_operations(list1, list2):
-    # Base case: Stop if either list is empty
-     if len(list1) == 0 or len(list2) == 0:
-        return {}  # Return an empty dictionary to prevent NoneType error
+    # Check for empty lists
+    if not list1 or not list2:
+        return set()  # Return an empty set if either list is empty
 
-    # Set operations (for example, intersection)
+    # Perform set intersection
     set1 = set(list1)
     set2 = set(list2)
     result = set1 & set2  # Intersection of both sets
 
-    print(result)  # Print the result of the operation
-
-    # Recursively call with smaller portions of the lists
-    return {"intersection": result}  # Return a dictionary containing the result
-
+    return result  # Return the intersection set
 # Example usage
 list1 = [1, 2, 3]
 list2 = [2, 3, 4]
 result = set_operations(list1, list2)
-
 # Handling result
-if result:  # Check if result is not None or empty
-    if isinstance(result, dict):
-        # If result is a dictionary, iterate with .items()
-        for operation, value in result.items():
-            print(f"Operation: {operation}, Value: {value}")
-    else:
-        # If result is not a dictionary, handle accordingly (e.g., print the result)
-        print(result)
+if result:  # Check if the result is not empty
+    print(f"Intersection: {result}")
 else:
-    print("The result is None or empty.")
-
-
-
+    print("The result is empty.")
 
 
 def arithmetic_ops(a, b):
-
+    # Perform arithmetic operations
     operations = {
-        'sum': a + b,            
-        'difference': a - b,                   
-        'product': a * b,                  
-        'quotient': a / b if b != 0 else None,     
-        
+        'sum': a + b,
+        'difference': a - b,
+        'product': a * b,
+        'quotient': a / b if b != 0 else None,  # Handle division by zero
     }
     return operations
-    
-    result = arithmetic_ops(a, b)
-for operation, value in result.items():
-    print(f"{operation}: {value}")
-a = 10
-b = 2
-result = arithmetic_ops(a, b)
-print("\nEdge case (b = 2):")
-for operation, value in result.items():
-    print(f"{operation}: {value}")
+# Call the function and store the result
+result = arithmetic_ops(10, 5)
+print(result)
 
 
 def logical_ops(x, y):
-    
     operations = {
-        'AND': x and y,       
-        'OR': x or y,         
-        'NOT_x': not x,       
+        'and': x and y,       
+        'or': x or y,         
+        'not_x': not x,       
     }
     return operations
-x = True
-y = False
-result = logical_ops(x, y)
-for op, value in result.items():
-    print(f"{op}: {value}")
+result = logical_ops(True, False)
+print(result)
 
 
 def bitwise_ops(a, b):
- 
     operations = {
         'and': a & b,       
         'or': a | b,           
         'xor': a ^ b,          
     }
     return operations
-    a = 5
-b = 3
-result = bitwise_ops(a, b)
-for operation, value in result.items():
-    print(f"{operation}: {value}")
+result = bitwise_ops(12, 10)
+print(result)
